@@ -1,46 +1,6 @@
-class Brave
-  attr_reader :name, :offense, :defense
-  attr_accessor :hp
-
-  def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-  end
-
-  def attack(monster)
-    puts "#{@name} の攻撃!"
-
-    damage = @offense - monster.defense / 2
-    monster.hp -= damage
-    monster.hp = 0 if monster.hp < 0
-    
-    puts "#{monster.name} に #{damage} のダメージを与えた!"
-  end
-end
-
-class Monster
-  attr_reader :name, :offense, :defense
-  attr_accessor :hp
-
-  def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-  end
-
-  def attack(brave)
-    puts "#{@name} の攻撃!"
-
-    damage = @offense - brave.defense / 2
-    brave.hp -= damage
-    brave.hp = 0 if brave.hp < 0
-
-    puts "#{brave.name} は #{damage} のダメージを受けた!"
-  end
-end
+require './character.rb'
+require './brave.rb'
+require './monster.rb'
 
 brave = Brave.new(name: "ゆうしゃ", hp: 238, offense: 203, defense: 129)
 monster = Monster.new(name: "アークデーモン", hp: 210, offense: 140, defense: 80)
